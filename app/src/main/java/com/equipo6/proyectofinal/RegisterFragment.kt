@@ -48,18 +48,22 @@ class RegisterFragment : Fragment() {
         register.setOnClickListener {
             if(TextUtils.isEmpty(userName.text.toString()))
             {
+                userName.requestFocus()
                 Toast.makeText(getActivity(), "Nombre obligatorio", Toast.LENGTH_SHORT).show();
             }else{
                 if(TextUtils.isEmpty(email.text.toString()))
                 {
+                    email.requestFocus()
                     Toast.makeText(getActivity(), "Correo electrónico obligatorio", Toast.LENGTH_SHORT).show();
                 }else{
                     if(TextUtils.isEmpty(passwd.text.toString()))
                     {
+                        passwd.requestFocus()
                         Toast.makeText(getActivity(), "Contraseña obligatorio", Toast.LENGTH_SHORT).show();
                     }else{
                         if(TextUtils.isEmpty(rePasswd.text.toString()))
                         {
+                            rePasswd.requestFocus()
                             Toast.makeText(getActivity(), "Confirmar la contraseña es obligatorio", Toast.LENGTH_SHORT).show();
                         }else
                         {

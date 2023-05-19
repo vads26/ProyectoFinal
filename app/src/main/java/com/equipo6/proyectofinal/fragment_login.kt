@@ -3,6 +3,7 @@ package com.equipo6.proyectofinal
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.os.Bundle
+import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -43,17 +44,6 @@ private lateinit var communicator: Comunicator
 
        val objectJson = arguments?.getString("userLogin")
 
-     /*   if(objectJson != null)
-        {
-            val gson = Gson()
-            val listUsers = gson.fromJson<ArrayList<LoginUser>>(objectJson, ArrayList::class.java)
-
-            userLst = listUsers
-        }
-
-      */
-
-
         communicator = activity as Comunicator
 
         register.setOnClickListener {
@@ -68,18 +58,32 @@ private lateinit var communicator: Comunicator
 
         login.setOnClickListener {
 
-            val db: SQLiteDatabase = usersDBHelper.readableDatabase
-            var sqlQuerys = "SELECT * FROM users WHERE email = '" + userName.text + "' AND passwd = '" + password.text + "'"
-            var selectDb = db.rawQuery(sqlQuerys, null)
-
-            if(!selectDb.moveToFirst()) {
-                Toast.makeText(getActivity(), "Correo no registrado", Toast.LENGTH_SHORT).show();
-            }else
+            if(TextUtils.isEmpty(userName.text.toString()))
             {
-                do{
-                    Toast.makeText(getActivity(), selectDb.getString(0).toString(), Toast.LENGTH_SHORT).show();
-                }while(selectDb.moveToNext())
+                userName.requestFocus()
+                Toast.makeText(getActivity(), "Correo electrónico obligatorio", Toast.LENGTH_SHORT).show();
+            }else{
+                if(TextUtils.isEmpty(password.text.toString()))
+                {
+                    password.requestFocus()
+                    Toast.makeText(getActivity(), "Contraseña es obligatorio", Toast.LENGTH_SHORT).show();
+                }else
+                {
+                    loading.visibility = View.VISIBLE
+                    val db: SQLiteDatabase = usersDBHelper.readableDatabase
+                    var sqlQuerys = "SELECT * FROM users WHERE email = '" + userName.text + "' AND passwd = '" + password.text + "'"
+                    var selectDb = db.rawQuery(sqlQuerys, null)
 
+                    if(!selectDb.moveToFirst()) {
+                        Toast.makeText(getActivity(), "Correo no registrado", Toast.LENGTH_SHORT).show();
+                    }else
+                    {
+                        do{
+                            Toast.makeText(getActivity(), selectDb.getString(0).toString(), Toast.LENGTH_SHORT).show();
+                        }while(selectDb.moveToNext())
+
+                    }
+                }
             }
         }
         // Inflate the layout for this fragment

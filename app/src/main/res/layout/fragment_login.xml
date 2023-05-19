@@ -31,15 +31,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtWelcome" >
+
         <EditText
             android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/prompt_email"
+            android:autofillHints=""
             android:fontFamily="@font/opensans_regular"
+            android:hint="@string/prompt_email"
             android:inputType="textEmailAddress"
+            android:selectAllOnFocus="true"
             android:textColorHint="@color/black"
-            android:selectAllOnFocus="true"/>
+            tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -50,17 +53,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_password">
+
         <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/prompt_password"
+            android:autofillHints=""
             android:fontFamily="@font/opensans_regular"
-            android:textColorHint="@color/black"
+            android:hint="@string/prompt_password"
             android:imeActionLabel="@string/action_sign_in_short"
             android:imeOptions="actionDone"
             android:inputType="textPassword"
-            android:selectAllOnFocus="true" />
+            android:selectAllOnFocus="true"
+            android:textColorHint="@color/black"
+            tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

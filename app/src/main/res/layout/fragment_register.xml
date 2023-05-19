@@ -42,10 +42,12 @@
             android:id="@+id/et_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            android:inputType="textPersonName"
+            android:autofillHints=""
             android:fontFamily="@font/opensans_regular"
-            android:hint="@string/register_name" />
+            android:hint="@string/register_name"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -55,14 +57,17 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="5dp"
         android:padding="5dp">
+
         <EditText
             android:id="@+id/et_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            android:inputType="textEmailAddress"
+            android:autofillHints=""
             android:fontFamily="@font/opensans_regular"
-            android:hint="@string/register_email"/>
+            android:hint="@string/register_email"
+            android:inputType="textEmailAddress"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -72,14 +77,17 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="10dp"
         android:padding="5dp">
+
         <EditText
             android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            android:inputType="textPassword"
+            android:autofillHints=""
             android:fontFamily="@font/opensans_regular"
-            android:hint="@string/register_passwd"/>
+            android:hint="@string/register_passwd"
+            android:inputType="textPassword"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -88,14 +96,17 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:padding="5dp">
+
         <EditText
             android:id="@+id/et_repassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            android:inputType="textPassword"
+            android:autofillHints=""
             android:fontFamily="@font/opensans_regular"
-            android:hint="@string/register_passwd_confirm"/>
+            android:hint="@string/register_passwd_confirm"
+            android:inputType="textPassword"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <RelativeLayout
