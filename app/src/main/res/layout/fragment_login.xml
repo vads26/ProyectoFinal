@@ -16,7 +16,7 @@
         android:layout_height="43dp"
         android:layout_marginTop="196dp"
         android:text="@string/welcome"
-
+        android:fontFamily="@font/opensans_bold"
         android:textColor="@color/purple_700"
         android:textSize="38sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,6 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/prompt_email"
+            android:fontFamily="@font/opensans_regular"
             android:inputType="textEmailAddress"
             android:textColorHint="@color/black"
             android:selectAllOnFocus="true"/>
@@ -54,6 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/prompt_password"
+            android:fontFamily="@font/opensans_regular"
             android:textColorHint="@color/black"
             android:imeActionLabel="@string/action_sign_in_short"
             android:imeOptions="actionDone"
@@ -69,7 +71,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="64dp"
         android:background="@color/black"
-
+        android:fontFamily="@font/opensans_regular"
         android:text="@string/action_sign_in"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -85,7 +87,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="64dp"
         android:background="@android:color/transparent"
-
+        android:fontFamily="@font/opensans_regular"
         android:text="@string/action_sign_on"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"

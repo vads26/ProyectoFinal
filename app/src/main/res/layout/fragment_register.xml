@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:text="@string/register_title"
-
+        android:fontFamily="@font/opensans_bold"
         android:textColor="@color/purple_700"
         android:textSize="38sp"
         android:layout_marginStart="25dp"
@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/register_subTitle"
-
+        android:fontFamily="@font/opensans_semibold"
         android:textSize="17sp"
         android:layout_marginStart="25dp"
         android:layout_marginBottom="50dp"/>
@@ -44,6 +44,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             android:inputType="textPersonName"
+            android:fontFamily="@font/opensans_regular"
             android:hint="@string/register_name" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -60,6 +61,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             android:inputType="textEmailAddress"
+            android:fontFamily="@font/opensans_regular"
             android:hint="@string/register_email"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -76,6 +78,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             android:inputType="textPassword"
+            android:fontFamily="@font/opensans_regular"
             android:hint="@string/register_passwd"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -91,6 +94,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             android:inputType="textPassword"
+            android:fontFamily="@font/opensans_regular"
             android:hint="@string/register_passwd_confirm"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -110,14 +114,14 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="30dp"
             android:text="@string/btnRegister"
-
+            android:fontFamily="@font/opensans_regular"
             android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/btn_cancelar"
             android:layout_width="158dp"
             android:layout_height="54dp"
-
+            android:fontFamily="@font/opensans_regular"
             android:layout_below="@+id/btn_register"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
