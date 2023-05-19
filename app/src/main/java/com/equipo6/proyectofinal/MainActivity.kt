@@ -32,9 +32,9 @@ class MainActivity : AppCompatActivity(),Comunicator {
         fragmentTransaction.replace(R.id.fragment_container, fragment_login()).commit()
     }
 
-    override fun signUp(loginUsers: String) {
+    override fun signUp() {
         val bundle = Bundle()
-        bundle.putString("userLogin", loginUsers)
+        bundle.putString("userLogin", "loginUsers")
         val fragmentManager = supportFragmentManager.beginTransaction()
         val fragmentLogIn = fragment_login()
         fragmentLogIn.arguments = bundle

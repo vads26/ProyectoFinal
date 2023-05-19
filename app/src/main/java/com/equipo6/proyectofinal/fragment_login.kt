@@ -1,5 +1,7 @@
 package com.equipo6.proyectofinal
 
+import android.database.sqlite.SQLiteDatabase
+import android.database.sqlite.SQLiteOpenHelper
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -22,6 +24,8 @@ import com.google.gson.Gson
  */
 class fragment_login : Fragment() {
     // TODO: Rename and change types of parameters
+    lateinit var usersDBHelper: mySqlLiteHelpter
+
 private lateinit var communicator: Comunicator
 
     private var userLst = ArrayList<LoginUser>()
@@ -39,13 +43,15 @@ private lateinit var communicator: Comunicator
 
        val objectJson = arguments?.getString("userLogin")
 
-        if(objectJson != null)
+     /*   if(objectJson != null)
         {
             val gson = Gson()
             val listUsers = gson.fromJson<ArrayList<LoginUser>>(objectJson, ArrayList::class.java)
 
             userLst = listUsers
         }
+
+      */
 
 
         communicator = activity as Comunicator
@@ -56,18 +62,24 @@ private lateinit var communicator: Comunicator
 
         }
 
+        val appContext = requireContext().applicationContext
+
+        usersDBHelper = mySqlLiteHelpter(appContext)
+
         login.setOnClickListener {
-            var existe: Boolean = false;
-            for(item in userLst){
-                if(userName.text.toString().equals(item.email) && password.text.toString().equals(item.passwd))
-                {
-                    var existe: Boolean = true;
-                    Toast.makeText(getActivity(), "existe", Toast.LENGTH_SHORT).show();
-                    break;
-                }
-            }
-            if(!existe) {
+
+            val db: SQLiteDatabase = usersDBHelper.readableDatabase
+            var sqlQuerys = "SELECT * FROM users WHERE email = '" + userName.text + "' AND passwd = '" + password.text + "'"
+            var selectDb = db.rawQuery(sqlQuerys, null)
+
+            if(!selectDb.moveToFirst()) {
                 Toast.makeText(getActivity(), "Correo no registrado", Toast.LENGTH_SHORT).show();
+            }else
+            {
+                do{
+                    Toast.makeText(getActivity(), selectDb.getString(0).toString(), Toast.LENGTH_SHORT).show();
+                }while(selectDb.moveToNext())
+
             }
         }
         // Inflate the layout for this fragment

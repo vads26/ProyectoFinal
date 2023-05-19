@@ -1,5 +1,6 @@
 package com.equipo6.proyectofinal
 
+import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
@@ -25,6 +26,8 @@ class RegisterFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private lateinit var communicator: Comunicator
     val loginUsers = arrayListOf<LoginUser>()
+    lateinit var usersDBHelper: mySqlLiteHelpter
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,6 +41,9 @@ class RegisterFragment : Fragment() {
         val rePasswd: EditText = view.findViewById(R.id.et_repassword)
 
         communicator = activity as Comunicator
+        val appContext = requireContext().applicationContext
+
+        usersDBHelper = mySqlLiteHelpter(appContext)
 
         register.setOnClickListener {
             if(TextUtils.isEmpty(userName.text.toString()))
@@ -59,23 +65,19 @@ class RegisterFragment : Fragment() {
                         {
                             if(passwd.text.toString().equals(rePasswd.text.toString()))
                             {
-                                var existe: Boolean = false;
-                                for(item in loginUsers){
-                                    if(email.text.toString().equals(item.email))
-                                    {
-                                        existe = true;
-                                        Toast.makeText(getActivity(), "Correo ya registrado anteriormente, intenta con otro", Toast.LENGTH_SHORT).show();
-                                        break;
-                                    }
-                                }
+                                val db: SQLiteDatabase = usersDBHelper.readableDatabase
+                                var sqlQuerys = "SELECT * FROM users WHERE email = '" + email.text + "'"
+                                var selectDb = db.rawQuery(sqlQuerys, null)
 
-                                if(!existe) {
+                                if(!selectDb.moveToFirst()) {
 
                                     var user = LoginUser()
                                     user.UserName = userName.text.toString()
                                     user.email = email.text.toString()
                                     user.passwd = passwd.text.toString()
                                     user.id = UUID.randomUUID().toString()
+
+                                    usersDBHelper.addUsers(user)
 
                                     loginUsers.add(user)
 
@@ -85,10 +87,14 @@ class RegisterFragment : Fragment() {
                                         Toast.LENGTH_SHORT
                                     ).show();
 
-                                    val gson = Gson();
-                                    val lstJson = gson.toJson(loginUsers);
-
-                                    communicator.signUp(lstJson)
+                                    communicator.signUp()
+                                }else
+                                {
+                                    Toast.makeText(
+                                        getActivity(),
+                                        "El correo ya fue registrado!",
+                                        Toast.LENGTH_SHORT
+                                    ).show();
                                 }
                             }else
                             {
