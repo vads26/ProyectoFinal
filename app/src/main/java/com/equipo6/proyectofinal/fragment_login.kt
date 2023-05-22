@@ -1,10 +1,9 @@
 package com.equipo6.proyectofinal
 
+import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
-import android.database.sqlite.SQLiteOpenHelper
 import android.os.Bundle
 import android.text.TextUtils
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,8 +11,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.equipo6.proyectofinal.data.model.LoginUser
-import com.google.gson.Gson
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -78,10 +77,21 @@ private lateinit var communicator: Comunicator
                         Toast.makeText(getActivity(), "Correo no registrado", Toast.LENGTH_SHORT).show();
                     }else
                     {
+                        var userId = ""
+                        var email = ""
                         do{
-                            Toast.makeText(getActivity(), selectDb.getString(0).toString(), Toast.LENGTH_SHORT).show();
+                            userId= selectDb.getString(0).toString()
+                            email= selectDb.getString(2).toString()
+                            Toast.makeText(getActivity(), selectDb.getString(2).toString(), Toast.LENGTH_SHORT).show();
                         }while(selectDb.moveToNext())
 
+                        val parametros = Bundle()
+                        parametros.putString("userId", userId)
+                        parametros.putString("email", email)
+
+                        val intent = Intent(appContext, NavigationActivity::class.java)
+                        intent.putExtras(parametros)
+                        startActivity(intent)
                     }
                 }
             }

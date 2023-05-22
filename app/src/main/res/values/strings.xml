@@ -21,4 +21,17 @@
     <string name="btnRegister">Aceptar</string>
     <string name="register_subTitle">Únete a esta experiencia</string>
     <string name="btnCancel">Cancelar</string>
+    <string name="title_activity_navigation">NavigationActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Equipo 6</string>
+    <string name="nav_header_subtitle">Proyecto final</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Inicio</string>
+    <string name="menu_gallery">Galería</string>
+    <string name="menu_slideshow">Mi información</string>
+    <string name="menu_logOff">Cerrar sesión</string>
+    <string name="menu_about">Ayuda</string>
 </resources>
