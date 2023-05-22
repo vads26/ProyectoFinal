@@ -1,9 +1,11 @@
 package com.equipo6.proyectofinal
 
+import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
@@ -19,6 +21,7 @@ class NavigationActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityNavigationBinding
+    lateinit var usersDBHelper: mySqlLiteHelpter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +52,8 @@ class NavigationActivity : AppCompatActivity() {
 
         headerEmail.text = email
 
+        dataMovie()
+
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_logOff, R.id.nav_about
@@ -67,5 +72,16 @@ class NavigationActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_navigation)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    fun dataMovie(){
+        usersDBHelper = mySqlLiteHelpter(this)
+        val db: SQLiteDatabase = usersDBHelper.readableDatabase
+        var sqlQuerys = "SELECT * FROM movie"
+        var selectDb = db.rawQuery(sqlQuerys, null)
+
+        if(!selectDb.moveToFirst()) {
+            usersDBHelper.addMovies()
+        }
     }
 }

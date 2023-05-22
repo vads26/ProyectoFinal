@@ -29,6 +29,17 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <string name="headerAbout">¿Qué es letterboxd?</string>
+    <string name="subHeaderAbout">Letterboxd es una plataforma en línea diseñada específicamente para los amantes del cine. Funciona como una red social centrada en películas, donde los usuarios pueden descubrir, calificar y revisar sus películas favoritas.</string>
+    <string name="header2About">Explorar y descubrir películas</string>
+    <string name="subHeader2About">Los usuarios de Letterboxd tienen varias opciones para explorar y descubrir películas de su interés.
+    Dirigete a la pantalla de inicio para que puedas filtar películas por categoría.
+    </string>
+
+    <string name="tab1">Ciencia ficción</string>
+    <string name="tab2">Terror</string>
+    <string name="tab3">Animado</string>
+
     <string name="menu_home">Inicio</string>
     <string name="menu_gallery">Galería</string>
     <string name="menu_slideshow">Mi información</string>

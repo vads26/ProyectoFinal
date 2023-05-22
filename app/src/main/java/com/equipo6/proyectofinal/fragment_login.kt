@@ -74,6 +74,7 @@ private lateinit var communicator: Comunicator
                     var selectDb = db.rawQuery(sqlQuerys, null)
 
                     if(!selectDb.moveToFirst()) {
+                        loading.visibility = View.INVISIBLE
                         Toast.makeText(getActivity(), "Correo no registrado", Toast.LENGTH_SHORT).show();
                     }else
                     {
@@ -82,7 +83,6 @@ private lateinit var communicator: Comunicator
                         do{
                             userId= selectDb.getString(0).toString()
                             email= selectDb.getString(2).toString()
-                            Toast.makeText(getActivity(), selectDb.getString(2).toString(), Toast.LENGTH_SHORT).show();
                         }while(selectDb.moveToNext())
 
                         val parametros = Bundle()
@@ -91,6 +91,7 @@ private lateinit var communicator: Comunicator
 
                         val intent = Intent(appContext, NavigationActivity::class.java)
                         intent.putExtras(parametros)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                         startActivity(intent)
                     }
                 }
